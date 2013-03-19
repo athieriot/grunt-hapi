@@ -9,20 +9,29 @@ module.exports = function(grunt) {
     var options = this.options({
       //debug: false,
       server: null,
-      bases: '.'
       // filepath that points to a module that exports an Hapi server object
+      base: '.'
     });
 
 		options.debug = grunt.option('debug') || options.debug;
-
-    if (grunt.util._.isArray(options.bases)) {
-      options.bases = options.bases.join(',');
-    }
 
     if (options.server) {
       try {
         var http = require(options.server);
 
+        if (options.base) {
+            http.route({
+              method: 'GET',
+              path: '/{path*}',
+              handler: {
+                directory: {
+                  path: options.base,
+                  listing: true
+                }
+              }
+            });
+        }
+ 
         http.start();
       } catch (e) {
         grunt.fatal('Hapi ["' + options.server + '"] -  ' + e);

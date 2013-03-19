@@ -40,11 +40,26 @@ exports.hapi = {
     done();
   },
   custom_options: function(test) {
-    test.expect(1);
-  
+    test.expect(3);
+
+    var count = 2;
+    function done() {
+      if (count === 0) {
+        test.done();
+      }
+    }
+
     get('http://localhost:3000/', function(res, body) {
       test.equal(res.statusCode, 200, 'should return 200');
-      test.done();
+      count--;
+      done();
+    });
+
+    get('http://localhost:3000/hello.txt', function(res, body) {
+      test.equal(res.statusCode, 200, 'should return 200');
+      test.equal(body, 'Testing\n', 'should return static files');
+      count--;
+      done();
     });
   },
 };

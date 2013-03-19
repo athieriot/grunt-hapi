@@ -26,7 +26,8 @@ module.exports = function(grunt) {
     hapi: {
       custom_options: {
         options: {
-          server: path.resolve('./test/fixtures/index')
+          server: path.resolve('./test/fixtures/index'),
+          base: path.resolve('./test/fixtures/public/')
         }
       },
     },

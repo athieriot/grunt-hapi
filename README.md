@@ -26,7 +26,8 @@ In your project's Gruntfile, add a section named `hapi` to the data object passe
 grunt.initConfig({
   hapi: {
     options: {
-      server: 'web'
+      server: 'web',
+      base: '.'
     }
   }
 })
@@ -40,16 +41,23 @@ Default value: `null`
 
 Filepath that points to a module that exports an Hapi server object
 
+#### options.base
+Type: `String`
+Default value: `.`
+
+FilePath that points to a directory from where you want to expose static files
+
 ### Usage Examples
 
 #### Custom Options
-In this example, the module `index.js` located in the `lib` directory will be use to start an instance of Hapi server.
+In this example, the module `index.js` located in the `lib` directory will be use to start an instance of Hapi server. The files in the `public` directory will be available from `/`
 
 ```js
 grunt.initConfig({
   hapi: {
     options: {
       server: 'lib/index',
+      base: './public/'
     }
   }
 })
