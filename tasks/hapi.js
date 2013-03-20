@@ -1,6 +1,16 @@
 
 'use strict';
 
+var cleanPath = function(string) {
+  var separator = '/';
+
+  if (string.charAt(string.length - 1) !== separator) {
+    return string + separator;
+  }
+   
+  return string;
+};
+
 module.exports = function(grunt) {
    
   grunt.registerMultiTask('hapi', 'Start an Hapi web server.', function() {
@@ -10,7 +20,7 @@ module.exports = function(grunt) {
       //debug: false,
       server: null,
       // filepath that points to a module that exports an Hapi server object
-      base: '.'
+      bases: {'/': '.'}
     });
 
 		options.debug = grunt.option('debug') || options.debug;
@@ -19,17 +29,17 @@ module.exports = function(grunt) {
       try {
         var http = require(options.server);
 
-        if (options.base) {
+        if (options.bases) {
+          for (var key in options.bases) {
             http.route({
-              method: 'GET',
-              path: '/{path*}',
+              method: 'GET', path: cleanPath(key) + '{path*}',
               handler: {
                 directory: {
-                  path: options.base,
-                  listing: true
+                  path: options.bases[key], listing: true
                 }
               }
             });
+          }
         }
  
         http.start();

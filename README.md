@@ -27,7 +27,9 @@ grunt.initConfig({
   hapi: {
     options: {
       server: 'web',
-      base: '.'
+      bases: {
+        '/': '.'
+      }
     }
   }
 })
@@ -41,23 +43,25 @@ Default value: `null`
 
 Filepath that points to a module that exports an Hapi server object
 
-#### options.base
-Type: `String`
-Default value: `.`
+#### options.bases
+Type: `Object
+Default value: `{'/': '.'}`
 
-FilePath that points to a directory from where you want to expose static files
+Key/Value pair that associate a URI path from where you want to access static files with a FilePath that point to a directory where Hapi can find these static files.
 
 ### Usage Examples
 
 #### Custom Options
-In this example, the module `index.js` located in the `lib` directory will be use to start an instance of Hapi server. The files in the `public` directory will be available from `/`
+In this example, the module `index.js` located in the `lib` directory will be use to start an instance of Hapi server. The files in the `public` directory will be available from `/public`
 
 ```js
 grunt.initConfig({
   hapi: {
     options: {
       server: 'lib/index',
-      base: './public/'
+      bases: {
+        '/public': './public/'
+      }
     }
   }
 })

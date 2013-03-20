@@ -27,7 +27,10 @@ module.exports = function(grunt) {
       custom_options: {
         options: {
           server: path.resolve('./test/fixtures/index'),
-          base: path.resolve('./test/fixtures/public/')
+          bases: {
+            '/': path.resolve('./test/fixtures/public/'),
+            '/public': path.resolve('./test/fixtures/public/')
+          }
         }
       },
     },
