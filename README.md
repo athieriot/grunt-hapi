@@ -51,20 +51,45 @@ Key/Value pair that associate a URI path from where you want to access static fi
 
 ### Usage Examples
 
-#### Custom Options
+#### Yeoman.io friendly
 In this example, the module `index.js` located in the `lib` directory will be use to start an instance of Hapi server. The files in the `public` directory will be available from `/public`
 
-```js
+Also, thanks to [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch), the server will be restarted at every change.
+
+Gruntfile.js:
+```
+...
 grunt.initConfig({
+  watch: {
+    hapi: {
+      files: ['lib/*.{js, coffee}'],
+      tasks: ['hapi']
+    }
+  },
   hapi: {
     options: {
-      server: 'lib/index',
+      server: require('path').resolve('./lib/index'),
       bases: {
-        '/public': './public/'
+        '/public': require('path').resolve('./public/')
       }
     }
   }
-})
+});
+
+grunt.registerTask('server', [
+  'hapi',
+  'watch'
+]);
+...
+```
+
+lib/index.js:
+```
+var Hapi = require('hapi');
+
+var app = new Hapi.Server();
+
+module.exports = app;
 ```
 
 ## Contributing
