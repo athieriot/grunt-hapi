@@ -33,7 +33,7 @@
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "~0.1.2",
     "grunt": "~0.4.1",
-    "hapi": "~0.15.6"
+    "hapi": "~1.1"
   },
   "peerDependencies": {
     "grunt": "~0.4.1"
