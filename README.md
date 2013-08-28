@@ -49,6 +49,13 @@ Default value: `{'/': '.'}`
 
 Key/Value pair that associate a URI path from where you want to access static files with a FilePath that point to a directory where Hapi can find these static files.
 
+#### options.noasync
+Type: `Boolean`
+Default value: `false`
+
+By default, grunt-hapi is configured to be compatible with grunt-contrib-watch and launch the server as an asynchronous task.
+If you just want to run `grunt hapi` and directly have access to your application, you can specify the `noasync` option at True. 
+
 ### Usage Examples
 
 #### Yeoman.io friendly

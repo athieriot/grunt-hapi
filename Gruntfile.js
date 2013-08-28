@@ -32,7 +32,7 @@ module.exports = function(grunt) {
             '/public': path.resolve('./test/fixtures/public/')
           }
         }
-      },
+      }
     },
 
     // Unit tests.
