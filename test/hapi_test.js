@@ -40,9 +40,9 @@ exports.hapi = {
     done();
   },
   custom_options: function(test) {
-    test.expect(5);
+    test.expect(7);
 
-    var count = 3;
+    var count = 4;
     function done() {
       if (count === 0) {
         test.done();
@@ -63,6 +63,13 @@ exports.hapi = {
     });
 
     get('http://localhost:3000/public/hello.txt', function(res, body) {
+      test.equal(res.statusCode, 200, 'should return 200');
+      test.equal(body, 'Testing\n', 'should return static files');
+      count--;
+      done();
+    });
+
+    get('http://localhost:3000/.hidden', function(res, body) {
       test.equal(res.statusCode, 200, 'should return 200');
       test.equal(body, 'Testing\n', 'should return static files');
       count--;
