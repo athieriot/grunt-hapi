@@ -72,7 +72,10 @@ grunt.initConfig({
   watch: {
     hapi: {
       files: ['lib/*.{js, coffee}'],
-      tasks: ['hapi']
+      tasks: ['hapi'],
+      options: {
+        spawn: false // Newer versions of grunt-contrib-watch might require this parameter.
+      }
     }
   },
   hapi: {
