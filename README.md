@@ -25,10 +25,12 @@ In your project's Gruntfile, add a section named `hapi` to the data object passe
 ```js
 grunt.initConfig({
   hapi: {
-    options: {
-      server: 'web',
-      bases: {
-        '/': '.'
+    custom_options: {
+      options: {
+        server: 'web',
+        bases: {
+          '/': '.'
+        }
       }
     }
   }
@@ -74,10 +76,12 @@ grunt.initConfig({
     }
   },
   hapi: {
-    options: {
-      server: require('path').resolve('./lib/index'),
-      bases: {
-        '/public': require('path').resolve('./public/')
+    custom_options: {
+      options: {
+        server: require('path').resolve('./lib/index'),
+        bases: {
+          '/public': require('path').resolve('./public/')
+        }
       }
     }
   }
