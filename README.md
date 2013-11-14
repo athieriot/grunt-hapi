@@ -111,3 +111,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Thanks
 This project is highly inspired by [grunt-express](https://github.com/blai/grunt-express)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/athieriot/grunt-hapi/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
