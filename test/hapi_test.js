@@ -2,6 +2,7 @@
 
 var grunt = require('grunt');
 var http = require('http');
+var httpFollow = require('follow-redirects').http;
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -23,8 +24,14 @@ var http = require('http');
     test.ifError(value)
 */
 
+function getRedirect(url, done) {
+  req(url, done, httpFollow);
+}
 function get(url, done) {
-  http.get(url, function(res) {
+  req(url, done, http);
+}
+function req(url, done, protocol) {
+  protocol.get(url, function(res) {
     var body = '';
     res.on('data', function(chunk) {
       body += chunk;
@@ -40,9 +47,9 @@ exports.hapi = {
     done();
   },
   custom_options: function(test) {
-    test.expect(7);
+    test.expect(8);
 
-    var count = 4;
+    var count = 5;
     function done() {
       if (count === 0) {
         test.done();
@@ -70,6 +77,12 @@ exports.hapi = {
     });
 
     get('http://localhost:3000/.hidden', function(res, body) {
+      test.equal(res.statusCode, 302, 'should return 200');
+      count--;
+      done();
+    });
+
+    getRedirect('http://localhost:3000/.hidden', function(res, body) {
       test.equal(res.statusCode, 200, 'should return 200');
       test.equal(body, 'Testing\n', 'should return static files');
       count--;

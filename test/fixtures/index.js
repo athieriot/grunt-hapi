@@ -5,8 +5,8 @@ var server = new Hapi.Server('localhost', 3000);
 
 server.route({ method: 'GET', path: '/', handler: test });
 
-function test() {
-  this.reply({ status: 'ok' });
+function test(request, reply) {
+  reply({ status: 'ok' });
 }
 
 module.exports = server;
