@@ -89,4 +89,20 @@ exports.hapi = {
       done();
     });
   },
+  server_options: function(test) {
+    test.expect(1);
+
+    var count = 1;
+    function done() {
+      if (count === 0) {
+        test.done();
+      }
+    }
+
+    get('http://localhost:3000/', function(res, body) {
+      test.equal(res.statusCode, 200, 'should return 200');
+      count--;
+      done();
+    });
+  },
 };
