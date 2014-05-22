@@ -2,15 +2,18 @@
 'use strict';
 
 module.exports = function(grunt) {
+  var all_running = [];
 
-  var running;
-   
   grunt.registerMultiTask('hapi', 'Start an Hapi web server.', function() {
     var done = this.async();
+
+    var running;
 
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       server: null,
+      port: null,
+      create_options: null,
       bases: {'/': '.'},
       noasync: false
     });
@@ -18,9 +21,11 @@ module.exports = function(grunt) {
     if (running !== undefined) {
       running.disconnect();
     }
-  
+
     // Starting a child process to launch the server in
     running = require('child_process').fork(__dirname + '/../lib/forkme');
+    all_running.push(running);
+
     running.send(options);
 
     // Handle errors or success happening in the child process
@@ -33,8 +38,8 @@ module.exports = function(grunt) {
     });
 
     process.on('exit', function() {
-      if (running !== undefined) {
-        running.disconnect();
+      while (all_running.length) {        
+        all_running.pop().disconnect();
       }
     });
   });

@@ -30,9 +30,19 @@ module.exports = function(grunt) {
           bases: {
             '/': path.resolve('./test/fixtures/public/'),
             '/public': path.resolve('./test/fixtures/public/')
+          }          
+        }
+      },
+      server_options: {
+        options: {
+          server: path.resolve('./test/fixtures/create_server'),
+          port: 3001,
+          bases: {
+            '/': path.resolve('./test/fixtures/public/'),
+            '/public': path.resolve('./test/fixtures/public/')
           }
         }
-      }
+      },
     },
 
     // Unit tests.

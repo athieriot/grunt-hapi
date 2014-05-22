@@ -1,12 +1,3 @@
-var Hapi = require('hapi');
+var create_server = require('./create_server');
 
-// Create a server on localhost port 3000
-var server = new Hapi.Server('localhost', 3000);
-
-server.route({ method: 'GET', path: '/', handler: test });
-
-function test(request, reply) {
-  reply({ status: 'ok' });
-}
-
-module.exports = server;
+module.exports = create_server();
