@@ -48,7 +48,7 @@ In case of string, a filepath that points to a module that exports an Hapi serve
 
 Or alternatively since v0.8.0, a filepath that points to a module that exports an Hapi server object constructor
 function.
-[`create_server.js`](text/fixtures/create_server.js) provides one example for such a constructor. The function signature of the exported function
+[`create_server.js`](test/fixtures/create_server.js) provides one example for such a constructor. The function signature of the exported function
 has been kept consistent with Hapi's. This new method can come handy if you are wanting to override the construction attributes from 
 your `Gruntfile`.
 
