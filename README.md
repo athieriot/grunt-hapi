@@ -44,10 +44,41 @@ grunt.initConfig({
 Type: `String`
 Default value: `null`
 
-Filepath that points to a module that exports an Hapi server object
+In case of string, a filepath that points to a module that exports an Hapi server object.
+
+Or alternatively since v0.8.0, a filepath that points to a module that exports an Hapi server object constructor
+function.
+[`create_server.js`](text/fixtures/create_server.js) provides one example for such a constructor. The function signature of the exported function
+has been kept consistent with Hapi's. This new method can come handy if you are wanting to override the construction attributes from 
+your `Gruntfile`.
+
+You may ask: but how would the caller of this constructor, namely `grunt-hapi` know about your desired `host`, `port` or `options`. See
+the following additional `grunt-hapi` options for that: `host`, `port`, `create_options` respectively.
+
+If you are wondering about why follow this obscure mechanism - read ahead, The `options.server` filepath is being `require`d by `grunt-hapi`, why cannot a user `require` it in the `Gruntfile` and 
+have total power of construction in a straight-forward fashion? The answer to that is that I tried it but ran into
+circular-reference issues in `grunt.initConfig`. Perhaps, the `Hapi` instance has some circular-references for convenience.
+
+#### options.host
+Type: `String`
+Default value: `null`
+
+The host value that would be used if `server` option provided to `grunt-hapi` is a module with exported constructor function.
+
+#### options.port
+Type: `Number`
+Default value: `null`
+
+The port value that would be used if `server` option provided to `grunt-hapi` is a module with exported constructor function.
+
+#### options.create_options
+Type: `Object`
+Default value: `null`
+
+The options object that would be used if `server` option provided to `grunt-hapi` is a module with exported constructor function.
 
 #### options.bases
-Type: `Object
+Type: `Object`
 Default value: `{'/': '.'}`
 
 Key/Value pair that associate a URI path from where you want to access static files with a FilePath that point to a directory where Hapi can find these static files.
