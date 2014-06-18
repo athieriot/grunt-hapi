@@ -18,8 +18,8 @@ module.exports = function(grunt) {
       noasync: false
     });
 
-    if (running !== undefined) {
-      running.disconnect();
+    while (all_running.length) {        
+        all_running.pop().disconnect();
     }
 
     // Starting a child process to launch the server in
