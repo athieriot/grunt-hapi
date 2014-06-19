@@ -24,12 +24,6 @@ var httpFollow = require('follow-redirects').http;
     test.ifError(value)
 */
 
-function getRedirect(url, done) {
-  req(url, done, httpFollow);
-}
-function get(url, done) {
-  req(url, done, http);
-}
 function req(url, done, protocol) {
   protocol.get(url, function(res) {
     var body = '';
@@ -39,6 +33,12 @@ function req(url, done, protocol) {
       done(res, body);
     });
   });
+}
+function getRedirect(url, done) {
+  req(url, done, httpFollow);
+}
+function get(url, done) {
+  req(url, done, http);
 }
 
 exports.hapi = {

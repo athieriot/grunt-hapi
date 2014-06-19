@@ -2,7 +2,7 @@
 'use strict';
 
 module.exports = function(grunt) {
-  var all_running = [];
+  var all_running = {};
 
   grunt.registerMultiTask('hapi', 'Start an Hapi web server.', function() {
     var done = this.async();
@@ -38,8 +38,11 @@ module.exports = function(grunt) {
     });
 
     process.on('exit', function() {
-      while (all_running.length) {        
-        all_running.pop().disconnect();
+      for (var target in all_running) {
+        if(all_running.hasOwnProperty(target) && all_running[target].connected) {
+
+          all_running[target].disconnect();
+        }
       }
     });
   });

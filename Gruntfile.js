@@ -1,5 +1,5 @@
-
 'use strict';
+
 var path = require('path');
 
 module.exports = function(grunt) {
@@ -27,6 +27,7 @@ module.exports = function(grunt) {
       custom_options: {
         options: {
           server: path.resolve('./test/fixtures/index'),
+          noasync: true,
           bases: {
             '/': path.resolve('./test/fixtures/public/'),
             '/public': path.resolve('./test/fixtures/public/')
