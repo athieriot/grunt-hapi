@@ -18,13 +18,13 @@ module.exports = function(grunt) {
       noasync: false
     });
 
-    if (running !== undefined) {
-      running.disconnect();
+    if (all_running[this.target]) {
+      all_running[this.target].disconnect();
     }
 
     // Starting a child process to launch the server in
     running = require('child_process').fork(__dirname + '/../lib/forkme');
-    all_running.push(running);
+    all_running[this.target] = running;
 
     running.send(options);
 
