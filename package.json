@@ -1,7 +1,7 @@
 {
   "name": "grunt-hapi",
   "description": "Start an Hapi web server using Grunt",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "homepage": "https://github.com/aurelien/grunt-hapi",
   "author": {
     "name": "Aurélien Thieriot",
