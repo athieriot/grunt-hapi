@@ -22,6 +22,16 @@ module.exports = function(grunt) {
       tests: ['tmp'],
     },
 
+    watch: {
+      hapi: {
+        files: ['test/fixtures/*.js'],
+        tasks: ['hapi:custom_options'],
+        options: {
+          spawn: false
+        }
+      }
+    },
+
     // Configuration to be run (and then tested).
     hapi: {
       custom_options: {
@@ -59,10 +69,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
   grunt.registerTask('test', ['clean', 'hapi', 'nodeunit']);
+
+  grunt .registerTask('test_watch', ['hapi', 'watch']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);

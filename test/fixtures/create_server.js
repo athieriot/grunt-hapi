@@ -1,5 +1,5 @@
 var Hapi = require('hapi');
-
+          
 var createServer = function(host, port, options) {
   // Create a server with specified options or defaults
   // NOTE: One could get more fancy and merge incoming options with some default options
@@ -10,7 +10,7 @@ var createServer = function(host, port, options) {
   function test(request, reply) {
     reply({ status: 'ok' });
   }
-
+  
   return server;
 }
 

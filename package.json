@@ -41,5 +41,8 @@
   },
   "keywords": [
     "gruntplugin"
-  ]
+  ],
+  "dependencies": {
+    "grunt-contrib-watch": "~0.6.1"
+  }
 }
