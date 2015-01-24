@@ -15,14 +15,14 @@ module.exports = function(grunt) {
       server: null,
       port: null,
       create_options: null,
-      bases: {'/': '.'},
+      bases: null,
       noasync: false
     });
 
     if (all_running[this.target]) {
       all_running[this.target].disconnect();
     }
- 
+
     // Starting a child process to launch the server in
     running = require('child_process').fork(__dirname + '/../lib/forkme');
     all_running[this.target] = running;
