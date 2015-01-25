@@ -46,7 +46,7 @@ module.exports = function(grunt) {
       server_options: {
         options: {
           server: path.resolve('./test/fixtures/create_server'),
-          port: 3001,
+          create_options: { port: 3001 },
           bases: {
             '/': path.resolve('./test/fixtures/public/'),
             '/public': path.resolve('./test/fixtures/public/')
