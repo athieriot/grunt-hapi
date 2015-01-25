@@ -15,7 +15,7 @@ module.exports = function(grunt) {
       server: null,
       port: null,
       create_options: null,
-      bases: {'/': '.'},
+      bases: {},
       noasync: false
     });
 

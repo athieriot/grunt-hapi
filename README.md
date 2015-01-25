@@ -79,7 +79,7 @@ The options object that would be used if `server` option provided to `grunt-hapi
 
 #### options.bases
 Type: `Object`
-Default value: `{'/': '.'}`
+Default value: `{ }`
 
 Key/Value pair that associate a URI path from where you want to access static files with a FilePath that point to a directory where Hapi can find these static files.
 
