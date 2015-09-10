@@ -1,7 +1,7 @@
 {
   "name": "grunt-hapi",
   "description": "Start an Hapi web server using Grunt",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "homepage": "https://github.com/aurelien/grunt-hapi",
   "author": {
     "name": "Aurélien Thieriot",
@@ -23,7 +23,7 @@
   ],
   "main": "Gruntfile.js",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": "~4.0.0"
   },
   "scripts": {
     "test": "grunt test"
@@ -33,7 +33,8 @@
     "grunt-contrib-clean": "^0.5.0",
     "grunt-contrib-nodeunit": "^0.4.0",
     "grunt": "~0.4.5",
-    "hapi": "^8.1.0",
+    "inert": "^3.0.1",
+    "hapi": "^9.3.0",
     "follow-redirects": "0.0.3"
   },
   "peerDependencies": {

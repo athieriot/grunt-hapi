@@ -4,7 +4,7 @@
 
 ## Getting Started
 This plugin requires Grunt `~0.4.2`
-And it is compatible with Hapi version 1.x and 2.x
+And is compatible with Hapi `9.3.x`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -69,6 +69,23 @@ Type: `Object`
 Default value: `{ }`
 
 Key/Value pair that associate a URI path from where you want to access static files with a FilePath that point to a directory where Hapi can find these static files.
+
+Starting from Hapi v9.3.9, it is necessary to require and register manually the `ìnert` plugin in order to support this feature.
+Here is an example of the minimal addition needed:
+
+```
+var inert = require('inert');
+
+// Then, after instantiating your Hapi server
+// And after calling server.connection(...);
+server.register(inert, function(err) {});
+```
+
+Don't forget to include the plugin in your dependencies
+
+```
+npm install --save inert
+```
 
 #### options.noasync
 Type: `Boolean`
