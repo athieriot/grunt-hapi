@@ -70,7 +70,7 @@ Default value: `{ }`
 
 Key/Value pair that associate a URI path from where you want to access static files with a FilePath that point to a directory where Hapi can find these static files.
 
-Starting from Hapi v9.3.9, it is necessary to require and register manually the `ìnert` plugin in order to support this feature.
+Starting from Hapi v9.3.0, it is necessary to require and register manually the `ìnert` plugin in order to support this feature.
 Here is an example of the minimal addition needed:
 
 ```
