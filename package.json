@@ -34,7 +34,7 @@
     "grunt-contrib-nodeunit": "0.4.1",
     "grunt": "0.4.5",
     "inert": "3.1.0",
-    "hapi": "10.4.1",
+    "hapi": "10.5.0",
     "follow-redirects": "0.0.3"
   },
   "peerDependencies": {
