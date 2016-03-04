@@ -31,7 +31,7 @@
   "devDependencies": {
     "grunt-contrib-jshint": "1.0.0",
     "grunt-contrib-clean": "1.0.0",
-    "grunt-contrib-nodeunit": "0.4.1",
+    "grunt-contrib-nodeunit": "1.0.0",
     "grunt": "0.4.5",
     "inert": "3.2.0",
     "hapi": "13.0.0",
