@@ -1,5 +1,7 @@
 # grunt-hapi
 
+[![Build Status](https://travis-ci.org/athieriot/grunt-hapi.svg?branch=master)](https://travis-ci.org/athieriot/grunt-hapi) [![Dependency Status](https://dependencyci.com/github/athieriot/grunt-hapi/badge)](https://dependencyci.com/github/athieriot/grunt-hapi)
+
 > Start an Hapi web server using Grunt
 
 ## Getting Started
