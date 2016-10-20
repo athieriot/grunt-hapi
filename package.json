@@ -35,7 +35,7 @@
     "grunt": ">=0.4.0",
     "inert": "4.0.1",
     "hapi": "15.2.0",
-    "follow-redirects": "0.2.0"
+    "follow-redirects": "0.3.0"
   },
   "peerDependencies": {
     "grunt": ">=0.4.0"
